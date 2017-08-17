@@ -87,5 +87,5 @@ LOGIN_REDIRECT_URL = '/'
 
 # OIDC Provider settings
 
-SITE_URL = 'http://localhost:8000'
+SITE_URL = os.environ.get('SITE_URL', 'http://localhost:8000')
 OIDC_SESSION_MANAGEMENT_ENABLE = True
