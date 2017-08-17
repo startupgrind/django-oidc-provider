@@ -43,7 +43,19 @@ Build and run the container.
 
 ```bash
 $ docker build -t django-oidc-provider .
-$ docker run -d -p 8000:8000 django-oidc-provider
+$ docker run --name django-oidc-provider -d -p 8000:8000 django-oidc-provider
+```
+
+If you're using Docker Toolbox (docker-machine), you'll need to set via environment variable the `SITE_URL` setting so it uses the VM's IP address.
+
+```bash
+$ docker run --name django-oidc-provider -d -p 8000:8000 -e "SITE_URL=http://`docker-machine ip`:8000" django-oidc-provider 
+```
+
+Create your super user.
+
+```bash
+$ docker exec -it django-oidc-provider python manage.py createsuperuser
 ```
 
 ## Install package for development
